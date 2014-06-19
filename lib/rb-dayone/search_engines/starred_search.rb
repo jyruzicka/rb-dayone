@@ -17,7 +17,7 @@ class DayOne::StarredSearch < DayOne::SearchEngine
   end
 
   # Does this search widget match the starred value of the given string?
-  # @returns [Boolean] Whether it matches or not
+  # @return [Boolean] Whether it matches or not
   def matches? string
     return true if @is.nil?
 

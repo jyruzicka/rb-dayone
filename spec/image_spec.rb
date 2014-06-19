@@ -13,24 +13,24 @@ describe DayOne::Entry do
     it "should correctly record a path to the assigned image" do
       e = DayOne::Entry.new
       e.image = spec_data('/sample_image.jpg')
-      e.image.should == spec_data('/sample_image.jpg')
+      expect(e.image).to eq(spec_data('/sample_image.jpg'))
     end
 
     it "should error if linked to a non-jpg image (for now)" do
       e = DayOne::Entry.new
-      ->{ e.image = spec_data('/sample_image.png') }.should raise_error
+      expect{ e.image = spec_data('/sample_image.png') }.to raise_error
     end
 
     it "should error if the linked image does not exist" do
       e = DayOne::Entry.new
-      -> { e.image = 'nonexistant.jpg' }.should raise_error
+      expect{ e.image = 'nonexistant.jpg' }.to raise_error
     end
 
     it "should relocate the image when the entry is created" do
       e = DayOne::Entry.new
       e.image = spec_data('/sample_image.jpg')
       e.create!
-      File.should exist(spec_data("working/photos/#{e.uuid}.jpg"))
+      expect(File).to exist(spec_data("working/photos/#{e.uuid}.jpg"))
     end
   end
   

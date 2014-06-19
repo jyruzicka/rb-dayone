@@ -6,11 +6,11 @@ class DayOne::PlistReader
   attr_accessor :path
   
   # Initialize the PList Reader, given a path
-  # @param [String] path the path to the PList; defaults to the standard DayOne preference plist
+  # @param path [String] the path to the PList; defaults to the standard DayOne preference plist
   def initialize path=nil
     default_paths = [ # There have been two default paths over the versions...
-      File.join(ENV['HOME'], 'Library', 'Group Containers', '5U8NS4GX82.dayoneapp', 'Data', 'Preferences', 'dayone.plist'), # From 1.7 on
-      File.join(ENV['HOME'], 'Library', 'Preferences', 'com.dayoneapp.dayone.plist') # Pre-1.7
+      File.join(ENV['HOME'], 'Library/Group Containers/5U8NS4GX82.dayoneapp/Data/Preferences/dayone.plist'), # From 1.7 on
+      File.join(ENV['HOME'], 'Library/Preferences/com.dayoneapp.dayone.plist') # Pre-1.7
     ]
 
 
@@ -29,10 +29,7 @@ class DayOne::PlistReader
   # Retrieve the body of the plist as an array, parsed through JSON
   # @return [Hash] the body of the plist as a hash.
   def body
-    if !@body
-      @body = Nokogiri::XML `plutil -convert xml1 -o - '#{path}'`
-    end
-    @body
+    @body ||= Nokogiri::XML `plutil -convert xml1 -o - '#{path}'`
   end
 
   # Retrieves an array of Nokogiri XML objects representing the

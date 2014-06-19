@@ -7,10 +7,13 @@ class DayOne::Location
   ALL_COMPONENTS = STRING_COMPONENTS + REAL_COMPONENTS
 
   # These are all instance variables
-  attr_accessor *ALL_COMPONENTS
+  ALL_COMPONENTS.each do |c|
+    # Component of the location
+    attr_accessor c
+  end
 
   # Initialize the location with a hash of values.
-  # @param [Hash] hsh The values to be assigned on initalization
+  # @param hsh [Hash] The values to be assigned on initalization
   def initialize hsh=nil
     if hsh
       hsh.each do |k,v|
@@ -22,15 +25,17 @@ class DayOne::Location
 
   # Has this location been left blank?
   # @return [bool] If any value in this instance is not nil or blank
-  def left_blank?
+  def left_blank
     STRING_COMPONENTS.all?{ |s| [nil,''].include?(send(s)) } &&
     REAL_COMPONENTS.all?{ |s| [nil,0.0].include?(send(s)) }
   end
+
+  alias_method :left_blank?, :left_blank
     
   # Converts the location to xml. A +builder+ must be supplied, and
   # this method will run operations on the builder and return
   # a boolean indicating its success.
-  # @param [Builder] builder The builder this object will be put in
+  # @param builder [Builder] The builder this object will be put in
   # @return [bool] The success of the operation
   def to_xml builder
     builder.key 'Location'
@@ -51,7 +56,7 @@ class DayOne::Location
   private
 
   # Gives the XML string for a particular symbol
-  # @param [Symbol] symbol The symbol to find the XML string for
+  # @param symbol [Symbol] The symbol to find the XML string for
   # @return [String] The string for this symbol
   def xml_string symbol
     if symbol.is_a? String
@@ -62,7 +67,7 @@ class DayOne::Location
   end
 
   # Gives the symbol for a particular XML string
-  # @param [String] string The XML string to find the symbol for
+  # @param xml_string [String] The XML string to find the symbol for
   # @return [Symbol] The symbol for this symbol
   def symbol xml_string
     if xml_string.is_a? Symbol

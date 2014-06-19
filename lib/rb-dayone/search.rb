@@ -14,7 +14,7 @@ class DayOne::Search
   def results
     if !@results
       # Fetch files + data
-      @results = DayOne::entries.each_with_object({}){ |file, hash| hash[file] = File.read(file) }
+      @results = DayOne::entries.each_with_object({}){ |file, hash| hash[file] = File.read(file, external_encoding: "UTF-8") }
 
       search_engines = self.active_search_engines
       @results = @results.select{ |k,v| search_engines.all?{ |se| se.matches?(v) }}
@@ -24,7 +24,7 @@ class DayOne::Search
   end
   
   # Fetches a particular result
-  # @param [Integer] index the index of the result to fetch
+  # @param index [Integer] the index of the result to fetch
   # @return [DayOne::Entry] the entry
   def [] index
     results[index]

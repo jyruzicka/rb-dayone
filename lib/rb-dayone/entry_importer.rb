@@ -9,21 +9,21 @@ class DayOne::EntryImporter
   
   # Create a new entry based on a string. To import from a file,
   # use EntryImporter.from_file.
-  # @param [String] data The raw data for the importer to process
-  # @param [String] file The file this data came from. Defaults to +nil+.
+  # @param data [String] The raw data for the importer to process
+  # @param file [String] The file this data came from. Defaults to +nil+.
   def initialize data, file=nil
     @data = data
     @file = file
   end
   
   # Create a new entry from a file
-  # @param [String] file The file to import
+  # @param file [String] The file to import
   def self.from_file file
     new(File.read(file), file)
   end
   
   # Access entry data by key
-  # @param [String, Symbol] key The key to retrieve 
+  # @param key [String, Symbol] The key to retrieve 
   # @return the value stored in the file, or nil
   def [] key
     processed_data[key]
@@ -54,7 +54,7 @@ class DayOne::EntryImporter
   # TODO Import images
 
   # Process an XML tag. Returns a the value of the tag as a ruby value.
-  # @param [Nokogiri::XML::Element] element The element to process
+  # @param element [Nokogiri::XML::Element] The element to process
   # @return The values contained within the element
   def process_value element
     case element.name
@@ -76,7 +76,7 @@ class DayOne::EntryImporter
   end
 
   # Process an XML dict element. Returns a hash of values
-  # @param [Nokogiri::XML::Element] element The dictionary element to process
+  # @param dict [Nokogiri::XML::Element] The dictionary element to process
   # @return [Hash] The values contained within the element
   def process_dict dict
     processed_data = {}

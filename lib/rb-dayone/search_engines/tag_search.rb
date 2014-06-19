@@ -18,7 +18,7 @@ class DayOne::TagSearch < DayOne::SearchEngine
   end
 
   # Does this search widget match the tags of the given string?
-  # @returns [Boolean] Whether it matches or not
+  # @return [Boolean] Whether it matches or not
   def matches? string
     tag_string = string[%r|<key>Tags</key>\s+<array>(.*?)</array>|m,1]
 

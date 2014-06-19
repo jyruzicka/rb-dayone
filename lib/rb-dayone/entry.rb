@@ -35,8 +35,8 @@ class DayOne::Entry
   DOCTYPE = [:DOCTYPE, :plist, :PUBLIC, "-//Apple//DTD PLIST 1.0//EN", "http://www.apple.com/DTDs/PropertyList-1.0.dtd"]
   
   # Initialise a journal entry, ready for inclusion into your journal
-  # @param [String] entry_text the body text of the journal entry
-  # @param [Hash] hsh a hash of options - allowed keys include `:creation_date`, `:entry_text` and `:starred`, others are ignored
+  # @param entry_text [String] the body text of the journal entry
+  # @param hsh [Hash] a hash of options - allowed keys include `:creation_date`, `:entry_text` and `:starred`, others are ignored
   # @return [DayOne::Entry] the journal entry
   def initialize entry_text='', hsh={}
     # Some defaults
@@ -66,7 +66,7 @@ class DayOne::Entry
   end
 
   # Add a tag to the entry
-  # @param [String] str The string tag to add to the list.
+  # @param str [String] The string tag to add to the list.
   def tag str
     @tags << str.to_s
   end

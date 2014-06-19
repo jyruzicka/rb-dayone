@@ -18,7 +18,7 @@ class DayOne::EntryTextSearch < DayOne::SearchEngine
   end
 
   # Does this search widget match the entry text of the given string?
-  # @returns [Boolean] Whether it matches or not
+  # @return [Boolean] Whether it matches or not
   def matches? string
     entry_text = string[%r|<key>Entry Text</key>\s+<string>(.*?)</string>|m,1]
 

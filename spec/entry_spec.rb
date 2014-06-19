@@ -16,25 +16,25 @@ describe DayOne::Entry do
     
     it "should give a default entry" do
       e = subject.to_xml
-      e.should match %r|<key>Entry Text</key>\s*<string></string>|
-      e.should match %r|<key>Starred</key>\s*<false/>|
+      expect(e).to match %r|<key>Entry Text</key>\s*<string></string>|
+      expect(e).to match %r|<key>Starred</key>\s*<false/>|
     end
     
     it "should set from initialize" do
-      sample_entry.starred.should be_true
-      sample_entry.entry_text.should == 'foo'
-      sample_entry.should_not be_saved
+      expect(sample_entry.starred).to eq(true)
+      expect(sample_entry.entry_text).to eq('foo')
+      expect(sample_entry).to_not be_saved
     end
     
     it "should act properly when starred" do
-      sample_entry.to_xml.should match %r|<key>Starred</key>\s*<true/>|
+      expect(sample_entry.to_xml).to match %r|<key>Starred</key>\s*<true/>|
     end
 
     it "should populate with tags" do
       s = sample_entry
       s.tag 'foo'
       s.tag 'bar'
-      s.to_xml.should match %r|<key>Tags</key>\s*<array>\s*<string>foo</string>\s*<string>bar</string>|
+      expect(s.to_xml).to match %r|<key>Tags</key>\s*<array>\s*<string>foo</string>\s*<string>bar</string>|
     end
 
     it "should put locations into the xml" do
@@ -42,8 +42,8 @@ describe DayOne::Entry do
       s.location.country = 'New Zealand'
       doc = Nokogiri::XML(s.to_xml)
       dict = doc.xpath('//plist/dict/dict')
-      dict.size.should eq(1)
-      dict.first.xpath('//string').select{ |s| s.content == 'New Zealand' }.size.should eq(1)
+      expect(dict.size).to eq(1)
+      expect(dict.first.xpath('//string').select{ |s| s.content == 'New Zealand' }.size).to eq(1)
     end
 
     it "should automatically detect tags in entries" do
@@ -57,9 +57,9 @@ This document tests our ability to detect tags like #foo and #bar, and even #baz
 end
       s.add_tags_from_entry_text
       %w(foo bar baz foo2012 bar_3).each do |t|
-        s.tags.should include(t)
+        expect(s.tags).to include(t)
       end
-      s.tags.should_not include('antifoo')
+      expect(s.tags).to_not include('antifoo')
     end
   end
   
@@ -71,10 +71,10 @@ end
       e.create!
       
       file_location = Dir[spec_data('working', 'entries', '*.doentry')][0]
-      file_location.should_not be_nil
+      expect(file_location).to_not be_nil
       
       contents = File.read(file_location)
-      contents.should == e.to_xml
+      expect(contents).to eq(e.to_xml)
     end
   end
   
@@ -82,7 +82,7 @@ end
     it "should handle weird XML characters" do
       e = subject
       e.entry_text = "Hello <&> Goodbye"
-      e.should be_xml_valid
+      expect(e).to be_xml_valid
     end
   end
 end

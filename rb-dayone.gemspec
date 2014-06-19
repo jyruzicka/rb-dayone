@@ -5,7 +5,8 @@ Gem::Specification.new do |s|
   s.version = File.read('version.txt')
   
   s.summary = "Create DayOne journal entries in ruby."
-  s.description = "Create or search [DayOne](http://www.dayoneapp.com) journal entries simply and easily in ruby."
+  s.description = "Create or search DayOne.app journal entries simply and easily in ruby."
+  s.license = "TBD"
   
   s.author = 'Jan-Yves Ruzicka'
   s.email = 'janyves.ruzicka@gmail.com'

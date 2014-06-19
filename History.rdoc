@@ -1,0 +1,140 @@
+= History
+
+== 0.7.2 / 2014-01-31
+
+[FIXED]
+  * Fixed a bug where UTF-8 in journal entries could prevent search from running properly.
+
+== 0.7.1 / 2014-01-15
+
+[NEW]
+  *  Save entries with +Entry#save!+, delete them with +Entry#delete!+
+  * Remove entry tags with +Entry#remove_tag+.
+[FIXED]
+  * Will now recognise hashtags at the start of lines.
+  * EntryImporter now adds the UUID to generated Entries
+  * The +Entry#auto_tag+ will now only accept tags with letters, numbers and underscores in them.
+
+== 0.7.0 / 2014-01-14
+
+[NEW]
+  * Use +Entry#created_at+ for +Entry#creation_date+, +Entry#auto_tag+ for +Entry#add_tags_from_entry_text+
+  * Search!
+
+== 0.6.1 / 2014-01-13
+
+[FIXED]
+  * Updated gem versions
+
+== 0.6.0 / 2013-01-14
+
+[NEW]
+  * Location support
+  * Re-added the binary with actual functionality.
+[FIXED]
+  * No longer relies on LibXML - all Nokogiri!
+  * Imports times correctly as UTC.
+
+== 0.5.0 / 2013-01-09
+
+[NEW]
+  * Added support for tagging entries via +Entry#tag+, +Entry#tags+, and +Entry#add_tags_from_entry_text+.
+[REMOVED]
+  * Got rid of the binary. You can probably make a better library on your own.
+
+== 0.4.1 / 2012-11-14
+
+[FIXED]
+  * rb-dayone was looking in the wrong place for preferences
+  * new preference files not json-parseable. Swapped to XML/Nokogiri
+
+== 0.4.0 / 2012-10-22
+
+[NEW]
+  * Added image support
+
+== 0.3.3 / 2012-08-17
+
+[NEW]
+  * Added the command "repair" to the dayone binary, which will at least repair *my* damage.
+  * Added the command "verify" to the dayone binary, which I at least find helpful.
+  * Added a post-install note telling people upgrading from <= 0.2.0 to repair.
+[FIXED]
+  * LibXML will now accept UTF-8 characters in journal entries.
+
+
+== 0.3.2 / 2012-08-16
+
+[NEW]
+  * Switched from REXML to LibXML-ruby for XML parsing. Now accepts ampersands in entries, as well as UTF-8. Rejoice!
+
+== 0.3.1 / 2012-08-16
+
+[FIXED]
+  * Minor bugfixes
+  * REXML will no longer kill the whole program if it can't parse a journal file.
+
+== 0.3.0 / 2012-08-16
+
+[FIXED]
+  * Fixed several bugs in Builder xml output, including:
+  * Output of trailing <target />
+  * Output of malformed DOCTYPE
+[NEW]
+  * You can now import existing DayOne entries and search them
+
+== 0.2.0 / 2012-08-14
+
+[NEW]
+  * Now auto-detects DayOne journal location from your plist file
+
+== 0.1.7 / 2012-08-13
+
+[NEW]
+  * The dayone binary can now add entries to your journal
+[FIXED]
+  * Managed to break the gem's include in 0.1.6, and because I'm a terrible amateur at all this, didn't pick up on it.
+
+== 0.1.6 / 2012-08-13
+
+[NEW]
+  * Updated documentation so YARD would generate nice rdocs
+  * dayone binary now uses the Commander gem
+  * Now using a Manifest file rather than globbing in whole directories
+
+== 0.1.5 / 2012-08-12
+
+[FIXED]
+  * Ouch, horrid horrid gemspec and readme. Let's make them prettier.
+
+== 0.1.4 / 2012-08-12
+
+[FIXED]
+  * Added a couple more tests for better coverage
+
+== 0.1.3 / 2012-08-12
+
+[NEW]
+  * Removed the SimpleXML class, now using the Builder gem
+
+== 0.1.2 / 2012-08-12
+
+[FIXED]
+  * Actual testing on my own system
+
+== 0.1.1 / 2012-08-07
+
+[FIXED]
+  * DayOne constants are now +attr_accessors+ - set them yourself if you wish!
+
+== 0.1.0 / 2012-08-06
+
+[NEW]
+  * Added binary
+  * Support for DayOne locations
+  * Uploaded to github!
+
+== 0.0.1 / 2012-08-05
+
+[NEW]
+  * Started development
