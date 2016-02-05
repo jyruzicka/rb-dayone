@@ -18,12 +18,12 @@ describe DayOne::Entry do
 
     it "should error if linked to a non-jpg image (for now)" do
       e = DayOne::Entry.new
-      expect{ e.image = spec_data('/sample_image.png') }.to raise_error
+      expect{ e.image = spec_data('/sample_image.png') }.to raise_error(RuntimeError)
     end
 
     it "should error if the linked image does not exist" do
       e = DayOne::Entry.new
-      expect{ e.image = 'nonexistant.jpg' }.to raise_error
+      expect{ e.image = 'nonexistant.jpg' }.to raise_error(RuntimeError)
     end
 
     it "should relocate the image when the entry is created" do
