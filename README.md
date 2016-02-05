@@ -2,6 +2,8 @@
 
 A means to create DayOne entries in ruby.
 
+**Note:** This gem is designed to work with DayOne Version 1 *only*. Once I have updated to DayOne Version 2 I will look at how to make this work with it. Until then, sorry Version 2 folks!
+
 ## Examples
 
 You can create an entry pretty simply:

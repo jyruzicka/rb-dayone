@@ -1,5 +1,6 @@
 source "https://www.rubygems.org"
 
-gem "builder", "~> 3.1.0"
-gem "commander", "~> 4.1.2"
-gem "nokogiri", "~> 1.6.0"
+gem "builder", "~> 3.1"
+gem "commander", "~> 4.2"
+gem "nokogiri", "~> 1.6"
+gem 'libxml-ruby', '~> 2.7'
