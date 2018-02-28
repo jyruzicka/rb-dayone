@@ -24,4 +24,5 @@ Manifest
 Rakefile
 rb-dayone.gemspec
 README.md
+LICENSE.md
 version.txt

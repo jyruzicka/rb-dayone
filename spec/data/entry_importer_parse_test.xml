@@ -18,8 +18,8 @@
       <real>2.345</real>
     </dict>
     <key>Bool test</key>
-    <true />
+    <true/>
     <key>Bool test 2</key>
-    <false />
+    <false/>
   </dict>
 </plist>

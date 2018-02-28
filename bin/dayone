@@ -5,27 +5,27 @@ require 'optparse/time'
 require 'time'
 
 program :name, 'dayone'
-program :version, DayOne::version
+program :version, DayOne.version
 program :description, 'A binary interface for the rb-dayone gem'
 
 command :create do |c|
   c.syntax = 'create [--starred] [--time=TIME] [--image=IMAGE] [--tags=TAGS] [--autotag] [--quiet] [ENTRYTEXT]'
   c.description = "Create a DayOne entry. If you don't supply entry text, it will notify you and fetch it from STDIN."
-  c.option '--starred', "Make the entry starred"
-  c.option '--time=TIME', Time, "Set the time the entry was made at. Defaults to now."
-  c.option '--image=IMAGE', String, "Add an image to the entry, specified by the path."
-  c.option '--tags=TAGS', String, "Add tags to the entry. Tags may be comma-separated."
-  c.option '--autotag', "Automatically collects #tags from the entry text and populates the tags field of the entry"
+  c.option '--starred', 'Make the entry starred'
+  c.option '--time=TIME', Time, 'Set the time the entry was made at. Defaults to now.'
+  c.option '--image=IMAGE', String, 'Add an image to the entry, specified by the path.'
+  c.option '--tags=TAGS', String, 'Add tags to the entry. Tags may be comma-separated.'
+  c.option '--autotag', 'Automatically collects #tags from the entry text and populates the tags field of the entry'
   c.option '--quiet', "Don't push feedback to STDOUT."
 
-  c.action do |args,opts|
+  c.action do |args, opts|
     e = DayOne::Entry.new
     e.starred = opts.starred
     e.creation_date = opts.time || Time.now
     e.image = opts.image if opts.image
     e.tags = opts.tags.split(',') if opts.tags
     if args.empty?
-      puts "Entry text:" unless opts.quiet
+      puts 'Entry text:' unless opts.quiet
       e.entry_text = $stdin.read.strip
     else
       # puts "Creating entry, "
@@ -34,6 +34,6 @@ command :create do |c|
 
     e.add_tags_from_entry_text if opts.autotag
     e.create!
-    puts "Entry created" unless opts.quiet
+    puts 'Entry created' unless opts.quiet
   end
 end

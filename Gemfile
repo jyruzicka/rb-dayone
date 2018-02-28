@@ -1,6 +1,8 @@
-source "https://www.rubygems.org"
+source 'https://www.rubygems.org'
 
-gem "builder", "~> 3.1"
-gem "commander", "~> 4.2"
-gem "nokogiri", "~> 1.6"
-gem 'libxml-ruby', '~> 2.7'
+gemspec
+
+gem 'rake'
+gem 'rspec'
+gem 'rubocop'
+gem 'rubocop-rspec'
