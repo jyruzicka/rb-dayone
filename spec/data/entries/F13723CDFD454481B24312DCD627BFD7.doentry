@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-<key>Creation Date</key>
-<date>2012-08-16T08:42:19Z</date>
-<key>Entry Text</key>
-<string>Hello bar.</string>
-<key>Starred</key>
-<true/>
-<key>UUID</key>
-<string>F13723CDFD454481B24312DCD627BFD7</string>
-</dict>
+  <dict>
+    <key>Creation Date</key>
+    <date>2012-08-16T08:42:19Z</date>
+    <key>Entry Text</key>
+    <string>Hello bar.</string>
+    <key>Starred</key>
+    <true/>
+    <key>UUID</key>
+    <string>F13723CDFD454481B24312DCD627BFD7</string>
+  </dict>
 </plist>

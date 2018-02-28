@@ -2,31 +2,30 @@
 # Create this object with Search.new. Give it some parameters to search for, then
 # use Search#[] to access results.
 class DayOne::Search
-    
   # Initialize the search. Takes a block, which allows
   # access to an array of +SearchEngine+ subclasses.
-  def initialize &blck
+  def initialize(&blck)
     instance_eval(&blck) if block_given?
   end
 
   # Fetch the results by searching.
   # @return [Array] all entries matching your results
   def results
-    if !@results
+    unless @results
       # Fetch files + data
-      @results = DayOne::entries.each_with_object({}){ |file, hash| hash[file] = File.read(file, external_encoding: "UTF-8") }
+      @results = DayOne.entries.each_with_object({}) { |file, hash| hash[file] = File.read(file, external_encoding: 'UTF-8') }
 
-      search_engines = self.active_search_engines
-      @results = @results.select{ |k,v| search_engines.all?{ |se| se.matches?(v) }}
-      @results = @results.map{ |file,data| DayOne::EntryImporter.new(data,file).to_entry }
+      search_engines = active_search_engines
+      @results = @results.select { |_k, v| search_engines.all? { |se| se.matches?(v) } }
+      @results = @results.map { |file, data| DayOne::EntryImporter.new(data, file).to_entry }
     end
     @results
   end
-  
+
   # Fetches a particular result
   # @param index [Integer] the index of the result to fetch
   # @return [DayOne::Entry] the entry
-  def [] index
+  def [](index)
     results[index]
   end
 
