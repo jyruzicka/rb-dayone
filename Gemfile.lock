@@ -5,14 +5,16 @@ GEM
     commander (4.2.0)
       highline (~> 1.6.11)
     highline (1.6.21)
-    mini_portile (0.5.2)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    libxml-ruby (2.9.0)
+    mini_portile2 (2.4.0)
+    nokogiri (1.10.4)
+      mini_portile2 (~> 2.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  builder (~> 3.1.0)
-  commander (~> 4.2.0)
-  nokogiri (~> 1.6.0)
+  builder (~> 3.1)
+  commander (~> 4.2)
+  libxml-ruby (~> 2.7)
+  nokogiri (~> 1.10)
